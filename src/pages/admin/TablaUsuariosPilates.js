@@ -24,7 +24,6 @@ import {
   Portal
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import logo from '../../img/logos/faviconE.png';
 import { useNavigate } from 'react-router-dom';
 import ModalEditarUsuario from './ModalEditarUsuario';
 import axios from 'axios';
@@ -120,7 +119,15 @@ const TablaUsuariosPilates = () => {
           flexDirection='column'
           mb={8}
           >
-          <Image src={logo} borderRadius='100%' w={{ base: "180px", md: "150px" }}/>
+          <Flex
+            flexDir='column'
+            alignItems='center'
+            justifyContent='center'
+            mb={4}
+            >
+            <Heading fontSize='4rem' textAlign='center' fontFamily="'Playfair Display', serif">E</Heading>
+            <Heading letterSpacing="3px" fontSize='md' textAlign='center' fontFamily="'Playfair Display', serif">ESTUDIO</Heading>
+          </Flex>
           <Button onClick={() => navigate('/calendario')} border='solid 1px' borderColor='brand.secondary' bg='brand.primary' color='brand.secondary' fontWeight='bold'>
             Volver al Calendario
           </Button>
@@ -134,7 +141,7 @@ const TablaUsuariosPilates = () => {
         letterSpacing="wide"
         textTransform="capitalize"
         color="brand.secondary"
-        textShadow="0 0 5px #6A8677, 0 0 10px #8fa99b, 0 0 20px #a7c3b3"
+        textShadow="0 0 5px #D89B77, 0 0 10px #8fa99b, 0 0 20px #a7c3b3"
       >
         Registro de Clientes
       </Heading>
@@ -167,7 +174,7 @@ const TablaUsuariosPilates = () => {
                 borderRadius: '8px',
                 border: '2px solid #ccc',
                 width: '250px',
-                backgroundColor: '#6A8677',
+                backgroundColor: '#D89B77',
               }}
             >
               <option value="todos">Todos</option>

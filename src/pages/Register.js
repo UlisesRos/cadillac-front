@@ -8,7 +8,6 @@ import {
     Heading,
     VStack,
     useToast,
-    Image,
     Flex,
     InputGroup,
     InputRightElement,
@@ -18,7 +17,6 @@ import {
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../img/logos/logoE.png';
 import backendUrl from '../config';
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
@@ -98,15 +96,19 @@ const Register = () => {
 
     return (
         <Flex minH="100vh" flexDir='column' align='center' justify={['start', 'start', 'center']} >
-            <Image 
-                src={logo}
-                objectFit='cover'
-                alt="Logo Eudonia"
-                borderRadius='full'
-                mt={5}  
+            <Flex
+                flexDir='column'
+                alignItems='center'
+                justifyContent='center'
+                mb={4}
+                color='brand.primary'
+                mt={10}
                 onClick={() => navigate('/')}
                 cursor='pointer'
-                />
+                >
+                <Heading letterSpacing="3px" fontSize='2rem' textAlign='center' fontFamily="'Playfair Display', serif">EUNOIA</Heading>
+                <Heading letterSpacing="3px" fontSize='md' textAlign='center' fontFamily="'Playfair Display', serif">ESTUDIO</Heading>
+            </Flex>
 
             <Box 
                 maxW='md'
@@ -122,27 +124,27 @@ const Register = () => {
                     <VStack spacing={4}>
                         <FormControl isRequired>
                             <FormLabel>Nombre</FormLabel>
-                            <Input name="nombre" border='1px solid #6A8677' onChange={handleChange} />
+                            <Input name="nombre" border='1px solid #D89B77' onChange={handleChange} />
                         </FormControl>
 
                         <FormControl isRequired>
                             <FormLabel>Apellido</FormLabel>
-                            <Input name="apellido" border='1px solid #6A8677' onChange={handleChange} />
+                            <Input name="apellido" border='1px solid #D89B77' onChange={handleChange} />
                         </FormControl>
 
                         <FormControl isRequired>
                             <FormLabel>Email</FormLabel>
-                            <Input type="email" name="email" border='1px solid #6A8677' onChange={handleChange} />
+                            <Input type="email" name="email" border='1px solid #D89B77' onChange={handleChange} />
                         </FormControl>
 
                         <FormControl isRequired>
                             <FormLabel>Celular</FormLabel>
-                            <Input type="tel" name="celular" border='1px solid #6A8677' onChange={handleChange} inputMode='numeric' pattern='[0-9]*' />
+                            <Input type="tel" name="celular" border='1px solid #D89B77' onChange={handleChange} inputMode='numeric' pattern='[0-9]*' />
                         </FormControl>
 
                         <FormControl isRequired>
                             <FormLabel>Días semanales</FormLabel>
-                            <Select name="diasSemanales" placeholder="Seleccionar..." border='1px solid #6A8677' onChange={handleChange}>
+                            <Select name="diasSemanales" placeholder="Seleccionar..." border='1px solid #D89B77' onChange={handleChange}>
                             <option value="1">1 vez por semana</option>
                             <option value="2">2 veces por semana</option>
                             <option value="3">3 veces por semana</option>
@@ -152,7 +154,7 @@ const Register = () => {
                         <FormControl isRequired>
                             <FormLabel>Contraseña</FormLabel>
                             <InputGroup>
-                                <Input type={showPassword ? 'text' : 'password'} name="password" border='1px solid #6A8677' onChange={handleChange} />
+                                <Input type={showPassword ? 'text' : 'password'} name="password" border='1px solid #D89B77' onChange={handleChange} />
                                 <InputRightElement>
                                     <IconButton
                                         aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
@@ -168,7 +170,7 @@ const Register = () => {
                         <FormControl isRequired>
                             <FormLabel>Confirmar contraseña</FormLabel>
                             <InputGroup>
-                                <Input type={showPassword ? 'text' : 'password'} name="confirmarPassword" border='1px solid #6A8677' onChange={handleChange} />
+                                <Input type={showPassword ? 'text' : 'password'} name="confirmarPassword" border='1px solid #D89B77' onChange={handleChange} />
                                 <InputRightElement>
                                     <IconButton
                                         aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}

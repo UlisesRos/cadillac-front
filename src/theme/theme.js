@@ -3,7 +3,7 @@ import { extendTheme } from "@chakra-ui/react";
 const theme = extendTheme({
     colors: {
         brand: {
-            primary: "#6A8677",
+            primary: "#D89B77",
             secondary: "#EBEBEB",
         },
     },
@@ -24,7 +24,7 @@ const theme = extendTheme({
                 _hover: {
                     color: 'brand.primary',
                     bg: 'brand.secondary',
-                    border: '1px solid #6A8677',
+                    border: '1px solid #D89B77',
                     boxShadow: '0 8px 20px rgba(106, 134, 119, 0.4)',
                     transform: 'translateY(-2px)',
                 },

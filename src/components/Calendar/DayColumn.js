@@ -46,7 +46,7 @@ const DayColumn = ({ dayName, date, turnos, onNombreClick, feriados = [], onMarc
                     )}
             </Heading>
 
-            {esAdmin && (
+            {esAdmin && dayName !== 'Lunes' && (
                 <Flex justifyContent="center">
                     {esFeriado ? (
                     <Button
@@ -72,27 +72,39 @@ const DayColumn = ({ dayName, date, turnos, onNombreClick, feriados = [], onMarc
                 </Flex>
             )}
 
-            <VStack
-                spacing={2}
-                color="brand.primary"
-                fontWeight="bold"
-                textAlign="center"
-                w="100%"
-            >
-                {horarios.map((hora, idx) => {
-                const turno = turnos.find(t => t.day === dayName && t.hour === hora);
-                return (
-                    <TimeSlot
-                        key={idx}
-                        dia={dayName}
-                        hora={hora}
-                        usersInSlot={turno?.users || []}
-                        currentUser={`${user?.nombre} ${user?.apellido}`}
-                        onNombreClick={(dia, hora, user) => onNombreClick(dia, hora, user)}
-                    />                
-                );                                
-            })}
-            </VStack>
+            {dayName === 'Lunes' ? (
+                <Heading
+                    size='sm'
+                    textAlign='center'
+                    fontSize={{ base: 'md', md: 'lg' }} // tamaño adaptable
+                    wordBreak="break-word"
+                    >
+                    PROXIMAMENTE
+                </Heading>
+            ) : (
+                <VStack
+                    spacing={2}
+                    color="brand.primary"
+                    fontWeight="bold"
+                    textAlign="center"
+                    w="100%"
+                >
+                    {horarios.map((hora, idx) => {
+                    const turno = turnos.find(t => t.day === dayName && t.hour === hora);
+                    return (
+                        <TimeSlot
+                            key={idx}
+                            dia={dayName}
+                            hora={hora}
+                            usersInSlot={turno?.users || []}
+                            currentUser={`${user?.nombre} ${user?.apellido}`}
+                            onNombreClick={(dia, hora, user) => onNombreClick(dia, hora, user)}
+                        />                
+                    );                                
+                })}
+                </VStack>
+            )}
+
         </Box>
     );
 };

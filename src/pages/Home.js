@@ -14,7 +14,7 @@ const Home = () => {
                     fontSize={['65px', '70px', '100px']}
                     letterSpacing="15px"
                     color="brand.secondary"
-                    textShadow="0 0 5px #6A8677, 0 0 10px #8fa99b, 0 0 20px #a7c3b3"
+                    textShadow="0 0 5px #D89B77, 0 0 10px #8fa99b, 0 0 20px #a7c3b3"
                     className='animate__animated animate__backInDown'
                     >EUNOIA</Heading>
                 <Heading
@@ -25,9 +25,9 @@ const Home = () => {
                     letterSpacing="widest"
                     textTransform="uppercase"
                     color="brand.secondary"
-                    textShadow="0 0 5px #6A8677, 0 0 10px #8fa99b, 0 0 20px #a7c3b3"
+                    textShadow="0 0 5px #D89B77, 0 0 10px #8fa99b, 0 0 20px #a7c3b3"
                     className='animate__animated animate__backInUp'
-                    >Estudio</Heading>
+                    >PILATES CADILLAC</Heading>
                 <Box
                     display='flex'
                     position='absolute'

@@ -1,4 +1,4 @@
-import { Button, Box, Heading, Text, Spinner, Flex, Image } from '@chakra-ui/react';
+import { Button, Box, Heading, Text, Spinner, Flex } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getCurrentWeekDates } from '../utils/calendarUtils';
@@ -12,8 +12,6 @@ import AdminInfoModal from '../components/Modals/AdminInfoModal';
 import { getFeriados, getTurnosPorHorario, getUserSelections, marcarFeriado, quitarFeriado, listarTurnosRecuperables } from '../services/calendarAPI';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '@chakra-ui/react';
-import logo from '../img/logos/faviconE.png';
-
 
     const monthNames = [
         'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
@@ -208,13 +206,15 @@ import logo from '../img/logos/faviconE.png';
                 color="brand.secondary"
                 minH="100vh"
                 >
-                <Box
-                    bg='brand.primary'
-                    display='flex'
+                <Flex
+                    flexDir='column'
+                    alignItems='center'
                     justifyContent='center'
+                    mb={4}
                     >
-                    <Image src={logo} borderRadius='100%' w='150px'/>
-                </Box>
+                    <Heading fontSize='4rem' textAlign='center' fontFamily="'Playfair Display', serif">E</Heading>
+                    <Heading letterSpacing="3px" fontSize='md' textAlign='center' fontFamily="'Playfair Display', serif">ESTUDIO</Heading>
+                </Flex>
                 <Heading
                     textAlign="center"
                     fontFamily="'Playfair Display', serif"
@@ -222,7 +222,7 @@ import logo from '../img/logos/faviconE.png';
                     letterSpacing="wide"
                     textTransform="capitalize"
                     color="brand.secondary"
-                    textShadow="0 0 5px #6A8677, 0 0 10px #8fa99b, 0 0 20px #a7c3b3"
+                    textShadow="0 0 5px #D89B77, 0 0 10px #8fa99b, 0 0 20px #a7c3b3"
                     mb={4}
                     fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }}
                     display={user.rol === 'usuario' ? 'block' : 'none'}
@@ -236,7 +236,7 @@ import logo from '../img/logos/faviconE.png';
                     letterSpacing="wide"
                     textTransform="capitalize"
                     color="brand.secondary"
-                    textShadow="0 0 5px #6A8677, 0 0 10px #8fa99b, 0 0 20px #a7c3b3"
+                    textShadow="0 0 5px #D89B77, 0 0 10px #8fa99b, 0 0 20px #a7c3b3"
                     mb={4}
                     fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }}
                     display={user.rol === 'admin' ? 'block' : 'none'}

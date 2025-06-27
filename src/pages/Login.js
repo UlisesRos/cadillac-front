@@ -8,7 +8,6 @@ import {
     VStack,
     useToast,
     Flex,
-    Image,
     Link,
     InputGroup,
     InputRightElement,
@@ -19,7 +18,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../img/logos/logoE.png';
 import { useAuth } from '../context/AuthContext';
 import backendUrl from '../config';
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -90,16 +88,19 @@ const Login = () => {
 
     return (
         <Flex minH="100vh" flexDir='column' align='center' justify={['start', 'start', 'center']}>
-            <Image 
-                src={logo}
-                objectFit='cover'
-                alt="Logo Eudonia"
-                borderRadius='full'
-                mt={5}
-                mb={2}
+            <Flex
+                flexDir='column'
+                alignItems='center'
+                justifyContent='center'
+                mb={4}
+                color='brand.primary'
+                mt={10}
                 onClick={() => navigate('/')}
                 cursor='pointer'
-            />
+                >
+                <Heading letterSpacing="3px" fontSize='2rem' textAlign='center' fontFamily="'Playfair Display', serif">EUNOIA</Heading>
+                <Heading letterSpacing="3px" fontSize='md' textAlign='center' fontFamily="'Playfair Display', serif">ESTUDIO</Heading>
+            </Flex>
             <Box 
                 maxW='md' 
                 w="full" 
@@ -117,7 +118,7 @@ const Login = () => {
                             <Input
                                 type="email"
                                 name="email"
-                                border='1px solid #6A8677'
+                                border='1px solid #D89B77'
                                 onChange={handleChange}
                             />
                         </FormControl>
@@ -128,7 +129,7 @@ const Login = () => {
                                 <Input
                                     type={showPassword ? 'text' : 'password'}
                                     name="password"
-                                    border='1px solid #6A8677'
+                                    border='1px solid #D89B77'
                                     onChange={handleChange}
                                 />
                                 <InputRightElement>
