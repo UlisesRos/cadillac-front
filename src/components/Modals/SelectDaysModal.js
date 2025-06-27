@@ -21,10 +21,10 @@ import { useAuth } from '../../context/AuthContext';
 
     const availableDays = [
         { day: 'Lunes', hours: ['PROXIMAMENTE'] },
-        { day: 'Martes', hours: ['07:00', '08:00', '09:00', '10:00', '16:00', '17:00', '18:00', '19:00', '20:00'] },
-        { day: 'Miércoles', hours: ['08:00', '09:00', '17:00', '18:00', '19:00', '20:00'] },
-        { day: 'Jueves', hours: ['07:00', '08:00', '09:00', '10:00', '16:00', '17:00', '18:00', '19:00', '20:00'] },
-        { day: 'Viernes', hours: ['08:00', '09:00', '10:00', '17:00', '18:00', '19:00'] },
+        { day: 'Martes', hours: ['07:00', '08:00', '09:00', '10:00'] },
+        { day: 'Miércoles', hours: ['08:00', '09:00'] },
+        { day: 'Jueves', hours: ['07:00', '08:00', '09:00', '10:00'] },
+        { day: 'Viernes', hours: ['08:00', '09:00', '10:00'] },
     ];
 
     function toKey(day, hour) {

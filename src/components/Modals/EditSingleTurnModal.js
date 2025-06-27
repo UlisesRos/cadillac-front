@@ -10,10 +10,10 @@ import { useAuth } from '../../context/AuthContext';
 
 const diasDisponibles = ['Martes', 'Miércoles', 'Jueves', 'Viernes'];
 const horasDisponibles = {
-    'Martes': ['07:00', '08:00', '09:00', '10:00', '16:00', '17:00', '18:00', '19:00', '20:00'],
-    'Miércoles': ['08:00', '09:00', '17:00', '18:00', '19:00', '20:00'],
-    'Jueves': ['07:00', '08:00', '09:00', '10:00', '16:00', '17:00', '18:00', '19:00', '20:00'],
-    'Viernes': ['08:00', '09:00', '10:00', '17:00', '18:00', '19:00']
+    'Martes': ['07:00', '08:00', '09:00', '10:00'],
+    'Miércoles': ['08:00', '09:00'],
+    'Jueves': ['07:00', '08:00', '09:00', '10:00'],
+    'Viernes': ['08:00', '09:00', '10:00']
 };
 
 export default function EditSingleTurnModal({
