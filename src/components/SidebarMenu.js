@@ -41,7 +41,7 @@ const SidebarMenu = () => {
 
             <Button
                 as='a'
-                href='https://eunoia-rosy.vercel.app/'
+                href='https://eunoia-rosy.vercel.app/home'
                 mb={5}
                 >
                 Pilates Reformer
