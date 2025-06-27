@@ -110,7 +110,7 @@ export default function EditSingleTurnModal({
 
     const turnosLlenos = new Set(
         turnosOcupados
-            .filter(t => t.users.length >= 7 && !t.users.some(u => u.nombre === nombreC))
+            .filter(t => t.users.length >= 4 && !t.users.some(u => u.nombre === nombreC))
             .map(t => `${t.day}-${t.hour}`)
     );
 

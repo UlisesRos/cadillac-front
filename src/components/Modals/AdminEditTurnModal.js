@@ -131,7 +131,7 @@ export default function AdminEditTurnModal({
 
     const turnosLlenos = new Set(
         turnosOcupados
-            .filter(t => t.users.length >= 7 && !t.users.some(u => u.nombre.trim() === selectedUser?.nombre.trim()))
+            .filter(t => t.users.length >= 4 && !t.users.some(u => u.nombre.trim() === selectedUser?.nombre.trim()))
             .map(t => `${t.day}-${t.hour}`)
     );
 

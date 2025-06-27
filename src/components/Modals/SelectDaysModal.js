@@ -56,7 +56,7 @@ import { useAuth } from '../../context/AuthContext';
 
         const turnosCompletos = new Set(
             turnosOcupados
-                .filter(t => t.users.length >= 7 && !t.users.includes(nombreC))
+                .filter(t => t.users.length >= 4 && !t.users.includes(nombreC))
                 .map(t => toKey(t.day, t.hour))
         );
 
