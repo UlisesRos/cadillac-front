@@ -3,7 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 
 
 const TimeSlot = ({ hora, usersInSlot = [], currentUser, onNombreClick, dia }) => {
-    const cantidadMaxima = 4;
+    const cantidadMaxima = 7;
     const lugares = [...usersInSlot];
 
     const { user: authUser } = useAuth();
@@ -39,7 +39,9 @@ const TimeSlot = ({ hora, usersInSlot = [], currentUser, onNombreClick, dia }) =
             >
                 {lugares.map((user, i) => {
                     const esActual = user && user.nombre === currentUser;
-                    const esClickeable = esAdmin || (user && user.nombre === currentUser);
+                    const esClickeable = user &&
+                        (user.tipo !== 'recuperado') &&
+                        (esAdmin || user.nombre === currentUser);
 
                     const tag = (
                         <Tag
@@ -47,6 +49,7 @@ const TimeSlot = ({ hora, usersInSlot = [], currentUser, onNombreClick, dia }) =
                             colorScheme={
                                 !user ? 'gray'
                                 : user.tipo === 'original' ? 'green'
+                                : user.tipo === 'recuperado' ? 'yellow'
                                 : 'red'
                             }
                             border={user ? esActual ? '1.5px solid black' : 'none' : 'none'}
