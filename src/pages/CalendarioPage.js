@@ -33,6 +33,8 @@ import { useToast } from '@chakra-ui/react';
         const [showRecuperarModal, setShowRecuperarModal] = useState(false);
         const [turnosRecuperables, setTurnosRecuperables] = useState([]);
         const [showInfoModal, setShowInfoModal] = useState(false);
+        const [mostrarBannerAjusteOriginal, setMostrarBannerAjusteOriginal] = useState(false);
+        const [esPrimerIngreso, setEsPrimerIngreso] = useState(false);
         
         useEffect(() => {
             getFeriados()
@@ -90,22 +92,42 @@ import { useToast } from '@chakra-ui/react';
 
             getUserSelections()
                 .then((data) => {
-                    const { selections, changesThisMonth } = data;
+                    const { selections, changesThisMonth, originalSelections = [] } = data;
                     setUserSelectionsState(selections || []);
                     setCambiosRestantes(2 - (changesThisMonth || 0));
 
-                    if (!selections || selections.length === 0) {
-                        if (user.rol === 'admin') {
-                            setShowSelectModal(false);
-                            return
-                        }
-                        setShowSelectModal(true);
+                    // ADMIN: nunca ve modal ni banner
+                    if (user.rol === 'admin') {
+                        setShowSelectModal(false);
+                        setMostrarBannerAjusteOriginal(false);
+                        return;
                     }
 
+                    // Usuario común:
+                    const tieneOriginales = originalSelections.length > 0;
+                    const coincideConDias = originalSelections.length === user.diasSemanales;
+
+                    if (!tieneOriginales) {
+                        // Usuario nuevo (primer ingreso)
+                        setEsPrimerIngreso(true);
+                        setShowSelectModal(true);
+                        setMostrarBannerAjusteOriginal(false);
+                    } else if (!coincideConDias) {
+                        // Usuario con turnos originales desajustados
+                        setEsPrimerIngreso(false);
+                        setShowSelectModal(false); // no mostrar modal, solo banner
+                        setMostrarBannerAjusteOriginal(true);
+                    } else {
+                        // Todo en orden
+                        setEsPrimerIngreso(false);
+                        setShowSelectModal(false);
+                        setMostrarBannerAjusteOriginal(false);
+                    }
                 })
                 .catch(() => {
-                    // En caso de error, también mostramos modal para que pueda elegir
-                    setShowSelectModal(true);
+                    if (user?.rol !== 'admin') {
+                        setShowSelectModal(true);
+                    }
                 });
         }, [user]);
 
@@ -406,13 +428,14 @@ import { useToast } from '@chakra-ui/react';
                     existingSelections={userSelections}
                     cambiosRestantes={cambiosRestantes}
                     turnosOcupados={turnos}
+                    modoOriginal={mostrarBannerAjusteOriginal}
+                    esPrimerIngreso={esPrimerIngreso}
                     onUpdate={() => {
-                        // Cuando el usuario guarda cambios, recargamos las selecciones
-                        getUserSelections()
-                            .then((data) => {
-                                setUserSelectionsState(data.selections || []);
-                                setCambiosRestantes(2 - (data.changesThisMonth || 0));
-                            })
+                        getUserSelections().then((data) => {
+                            setUserSelectionsState(data.selections || []);
+                            setCambiosRestantes(2 - (data.changesThisMonth || 0));
+                        });
+                        getTurnosPorHorario().then(setTurnos);
                     }}
                 />
 
@@ -506,6 +529,37 @@ import { useToast } from '@chakra-ui/react';
                             Asignar turno
                         </Button>
 
+                    </Box>
+                )}
+
+                {user?.rol === 'usuario' && userSelections && mostrarBannerAjusteOriginal && (
+                    <Box
+                        position="fixed"
+                        bottom="0"
+                        left="0"
+                        w="100%"
+                        bg="rgba(0, 0, 0, 0.85)"
+                        color="white"
+                        py={4}
+                        px={6}
+                        zIndex={1000}
+                        display="flex"
+                        flexDirection={{ base: 'column', md: 'row' }}
+                        justifyContent="space-between"
+                        alignItems="center"
+                        gap={3}
+                        boxShadow="0 -2px 8px rgba(0,0,0,0.3)"
+                    >
+                        <Text fontSize={{ base: 'sm', md: 'md' }} fontWeight="bold">
+                            Tus días semanales han cambiado. Debés ajustar tus turnos originales.
+                        </Text>
+                        <Button
+                            size="sm"
+                            colorScheme="teal"
+                            onClick={() => setShowSelectModal(true)}
+                        >
+                            Ajustar turnos
+                        </Button>
                     </Box>
                 )}
                 
