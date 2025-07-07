@@ -489,7 +489,7 @@ import { useToast } from '@chakra-ui/react';
                     horasDisponiblesPorDia={{
                         Lunes: ['08:00', '09:00', '10:00'],
                         Martes: ['07:00', '08:00', '09:00', '10:00'],
-                        Miércoles: ['08:00', '09:00'],
+                        Miércoles: ['07:00', '08:00', '09:00'],
                         Jueves: ['07:00', '08:00', '09:00', '10:00'],
                         Viernes: ['08:00', '09:00', '10:00']
                     }}
