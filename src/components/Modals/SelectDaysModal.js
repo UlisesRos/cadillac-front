@@ -9,7 +9,7 @@ const diasDisponibles = ['Martes', 'Miércoles', 'Jueves', 'Viernes'];
 const horasDisponibles = {
     'Martes': ['07:00', '08:00', '09:00', '10:00'],
     'Miércoles': ['08:00', '09:00'],
-    'Jueves': ['07:00', '08:00', '09:00', '10:00',
+    'Jueves': ['07:00', '08:00', '09:00', '10:00'],
     'Viernes': ['08:00', '09:00', '10:00']
 };
 
