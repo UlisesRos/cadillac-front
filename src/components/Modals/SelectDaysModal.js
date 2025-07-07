@@ -5,8 +5,9 @@ import {
 import { useState, useEffect } from 'react';
 import { setUserSelections, setOriginalSelections } from '../../services/calendarAPI';
 
-const diasDisponibles = ['Martes', 'Miércoles', 'Jueves', 'Viernes'];
+const diasDisponibles = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
 const horasDisponibles = {
+    'Lunes': ['08:00', '09:00', '10:00'],
     'Martes': ['07:00', '08:00', '09:00', '10:00'],
     'Miércoles': ['08:00', '09:00'],
     'Jueves': ['07:00', '08:00', '09:00', '10:00'],
