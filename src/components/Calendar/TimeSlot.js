@@ -40,7 +40,6 @@ const TimeSlot = ({ hora, usersInSlot = [], currentUser, onNombreClick, dia }) =
                 {lugares.map((user, i) => {
                     const esActual = user && user.nombre === currentUser;
                     const esClickeable = user &&
-                        (user.tipo !== 'recuperado') &&
                         (esAdmin || user.nombre === currentUser);
 
                     const tag = (
