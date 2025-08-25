@@ -8,9 +8,9 @@ import { setUserSelections, setOriginalSelections } from '../../services/calenda
 const diasDisponibles = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
 const horasDisponibles = {
     'Lunes': ['08:00', '09:00', '10:00'],
-    'Martes': ['07:00', '08:00', '09:00', '10:00'],
+    'Martes': ['07:00', '08:00', '09:00', '10:00', '17:00', '18:00'],
     'Miércoles': ['07:00', '08:00', '09:00'],
-    'Jueves': ['07:00', '08:00', '09:00', '10:00'],
+    'Jueves': ['07:00', '08:00', '09:00', '10:00', '18:00', '20:00'],
     'Viernes': ['08:00', '09:00', '10:00']
 };
 
