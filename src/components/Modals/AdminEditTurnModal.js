@@ -8,9 +8,9 @@ import backendUrl from '../../config';
 
 const API_URL = `${backendUrl}/api/calendar`;
 
-const diasDisponibles = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+const diasDisponibles = ['Martes', 'Miércoles', 'Jueves', 'Viernes'];
 const horasDisponibles = {
-    'Lunes': ['PROXIMAMENTE'],
+    'Lunes': [],
     'Martes': ['07:00', '08:00', '09:00', '10:00', '17:00', '18:00', '19:00', '20:00'],
     'Miércoles': ['07:00', '08:00', '09:00'],
     'Jueves': ['07:00', '08:00', '09:00', '10:00', '17:00', '18:00', '19:00', '20:00'],
