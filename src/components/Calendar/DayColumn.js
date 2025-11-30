@@ -39,7 +39,7 @@ const DayColumn = ({ dayName, date, turnos, onNombreClick, feriados = [], onMarc
                     'FERIADO'
                     ) : (
                     <>
-                        {dayName === 'Lunes' ? 'PROXIMAMENTE' : dayName}
+                        {dayName === 'Lunes' || dayName === 'Miércoles' ? 'PROXIMAMENTE' : dayName}
                         <br />
                         {fechaFormateada}
                     </>
