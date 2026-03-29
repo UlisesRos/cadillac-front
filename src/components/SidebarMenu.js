@@ -38,13 +38,13 @@ const SidebarMenu = () => {
                     Registrarse
                 </Button>
             </VStack>
-
+            
             <Button
                 as='a'
-                href='https://eunoia-rosy.vercel.app/home'
+                href='https://cadillac-three.vercel.app/'
                 mb={5}
                 >
-                Pilates Reformer
+                Pilates Cadillac
             </Button>
         </Flex>
     );
