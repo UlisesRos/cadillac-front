@@ -41,10 +41,10 @@ const SidebarMenu = () => {
             
             <Button
                 as='a'
-                href='https://cadillac-three.vercel.app/'
+                href='https://eunoia-rosy.vercel.app/home'
                 mb={5}
                 >
-                Pilates Cadillac
+                Pilates Reformer
             </Button>
         </Flex>
     );
