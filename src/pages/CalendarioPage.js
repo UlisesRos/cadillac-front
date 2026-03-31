@@ -42,6 +42,7 @@ const CalendarioPage = () => {
     const [showInfoModal, setShowInfoModal] = useState(false);
     const [mostrarBannerAjusteOriginal, setMostrarBannerAjusteOriginal] = useState(false);
     const [esPrimerIngreso, setEsPrimerIngreso] = useState(false);
+    const [originalSelectionsState, setOriginalSelectionsState] = useState([]);
     const [showScheduleModal, setShowScheduleModal] = useState(false);
     const [schedule, setSchedule] = useState({});
     const [closedSlots, setClosedSlots] = useState([]);
@@ -151,6 +152,7 @@ const CalendarioPage = () => {
             .then((data) => {
                 const { selections, changesThisMonth, originalSelections = [] } = data;
                 setUserSelectionsState(selections || []);
+                setOriginalSelectionsState(originalSelections);
                 setCambiosRestantes(2 - (changesThisMonth || 0));
 
                 if (user.rol === 'admin') {
@@ -561,15 +563,19 @@ const CalendarioPage = () => {
                 isOpen={showSelectModal}
                 onClose={() => setShowSelectModal(false)}
                 diasSemanales={user?.diasSemanales || 1}
-                existingSelections={userSelections}
+                existingSelections={mostrarBannerAjusteOriginal ? originalSelectionsState : userSelections}
                 cambiosRestantes={cambiosRestantes}
                 turnosOcupados={turnos}
                 modoOriginal={mostrarBannerAjusteOriginal}
                 esPrimerIngreso={esPrimerIngreso}
                 onUpdate={() => {
                     getUserSelections().then((data) => {
-                        setUserSelectionsState(data.selections || []);
-                        setCambiosRestantes(2 - (data.changesThisMonth || 0));
+                        const { selections, changesThisMonth, originalSelections = [] } = data;
+                        setUserSelectionsState(selections || []);
+                        setOriginalSelectionsState(originalSelections);
+                        setCambiosRestantes(2 - (changesThisMonth || 0));
+                        const coincide = originalSelections.length === user.diasSemanales;
+                        setMostrarBannerAjusteOriginal(!coincide && originalSelections.length > 0);
                     });
                     fetchAllTurnos();
                 }}
